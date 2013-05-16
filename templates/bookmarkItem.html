@@ -1,0 +1,44 @@
+<template name="bookmarkItem">
+  <tr>
+    <td style="width: 50%;">
+      <strong><a href="{{url}}">{{title}}</a></strong>
+      {{#if description}}
+        <br />
+        <small>{{description}}</small>
+      {{/if}}
+    </td>
+    <td>
+      {{#if category}}
+        <a href="/{{category._id}}"><strong>{{category.name}}</strong></a>
+      {{else}}
+        &nbsp;
+      {{/if}}
+    </td>
+    <td>
+      <span class="label">{{createdAt}}</span>
+    </td>
+    <td>
+      <small class="grey">
+        Posted by
+        <strong>
+          {{#if user}}
+            {{user.profile.name}}
+          {{else}}
+            Anonymous
+          {{/if}}
+        </strong>
+      </small>
+    </td>
+    <td style="text-align: right;">
+      {{#if isAuthor}}
+        <button class="btn action-delete"><i class="icon-remove"></i></button>
+      {{/if}}
+
+      {{#if currentUser}}
+        <button class="btn btn-primary action-like"><i class="icon-heart"></i> {{likes}}</button>
+      {{else}}
+        <button class="btn"><i class="icon-heart"></i> {{likes}}</button>
+      {{/if}}
+    </td>
+  </tr>
+</template>

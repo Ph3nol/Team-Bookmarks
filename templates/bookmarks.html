@@ -1,0 +1,13 @@
+<template name="bookmarks">
+  <table class="table table-hover">
+    <tbody>
+      {{#each bookmarks}}
+        {{> bookmarkItem}}
+      {{else}}
+        <li class="alert">
+            No Bookmark for instant.
+        </li>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
