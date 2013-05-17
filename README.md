@@ -26,3 +26,7 @@ Let's see the project from your browser : [http://localhost:12345](http://localh
 ## Deployment
 
 Soon.
+
+## License
+
+This project is released under the MIT License. See the bundled LICENSE file for details.

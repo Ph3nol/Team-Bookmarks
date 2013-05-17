@@ -19,8 +19,11 @@ Template.bookmarkItem.events = {
 
     alreadyRated = Bookmarks.findOne({_id: this._id, uRates: {$in: [Meteor.user()._id]}});
 
-    if (!alreadyRated) {
-      Bookmarks.update(this._id, {$inc: {likes: 1}, $push: {uRates: Meteor.user()._id}});
-    }
+    bookmarkUpdates = alreadyRated
+      ? {$inc: {likes: -1}, $pull: {uRates: Meteor.user()._id}}
+      : {$inc: {likes: 1}, $push: {uRates: Meteor.user()._id}}
+    ;
+
+    Bookmarks.update(this._id, bookmarkUpdates);
   }
 };
