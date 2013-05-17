@@ -3,31 +3,32 @@ Template.bookmarkAdd.helpers({
 });
 
 Template.bookmarkAdd.events = {
-  'submit': function (e) {
+  'submit': function (e, template) {
     e.preventDefault();
 
     if (Meteor.user()) {
-      var bookmarkForm = $('#add-bookmark-form');
+      var bookmarkForm = template.find('form');
 
       var bookmark = {
-        title:       $('input[name=bookmark_title]', bookmarkForm).val(),
-        url:         $('input[name=bookmark_url]', bookmarkForm).val(),
-        description: $('textarea[name=bookmark_description]', bookmarkForm).val(),
+        title:       template.find('form input[name=bookmark_title]').value,
+        url:         template.find('form input[name=bookmark_url]').value,
+        description: template.find('form textarea[name=bookmark_description]').value,
         createdAt:   (new Date()).getTime(),
         likes:       0,
         uRates:      [],
-        category_id: $('select', bookmarkForm).val() ? $('select', bookmarkForm).val() : null,
+        category_id: (template.find('form select[name=bookmark_category_id]').value || null),
         user_id:     Meteor.user()._id
       };
 
-      $('input[type=text], input[type=url], textarea', bookmarkForm).each(function () {
-        $(this).val('');
+      Bookmarks.insert(bookmark, function (err) {
+        if (!err) {
+          _.each(template.findAll('form input[type=text], form input[type=url], form textarea'), function(input) {
+            input.value = '';
+          });
+
+          template.find('form input[name=bookmark_title]').focus();
+        }
       });
-
-      $('select', bookmarkForm).val($('select option:first', bookmarkForm).val());
-      $('input[type=text]:first').focus();
-
-      Bookmarks.insert(bookmark);
     }
   }
 };
