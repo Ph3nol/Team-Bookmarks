@@ -35,7 +35,11 @@
       {{/if}}
 
       {{#if currentUser}}
-        <button class="btn btn-primary action-like"><i class="icon-heart"></i> {{likes}}</button>
+        {{#if hasRated}}
+          <button class="btn btn-inverse action-like"><i class="icon-heart"></i> {{likes}}</button>
+        {{else}}
+          <button class="btn btn-primary action-like"><i class="icon-heart"></i> {{likes}}</button>
+        {{/if}}
       {{else}}
         <button class="btn"><i class="icon-heart"></i> {{likes}}</button>
       {{/if}}

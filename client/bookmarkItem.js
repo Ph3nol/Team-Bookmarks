@@ -3,7 +3,18 @@ Template.bookmarkItem.helpers({
   category:   function () { return Categories.findOne(this.category_id); },
   user:       function () { return Meteor.users.findOne(this.user_id); },
   isAuthor:   function () { return (Meteor.user() && (Meteor.user()._id === this.user_id)); },
-  likesUsers: function () { return Meteor.users.find({_id: {$in: this.uRates}}); }
+  likesUsers: function () { return Meteor.users.find({_id: {$in: this.uRates}}); },
+  hasRated:   function () {
+    hasRated = false;
+
+    _.each(this.uRates, function (userId) {
+      if (Meteor.user() && Meteor.user()._id === userId) {
+        hasRated = true;
+      }
+    });
+
+    return hasRated;
+  }
 });
 
 Template.bookmarkItem.events = {
