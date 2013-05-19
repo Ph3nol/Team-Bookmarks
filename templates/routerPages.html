@@ -14,12 +14,31 @@
 <template name="categoryPage">
   <div class="row-fluid">
     <div class="span9">
-      <h2>Category: {{category.name}}</h2>
+      <h2>{{category.name}} Bookmarks</h2>
       {{> bookmarks}}
     </div>
     <div class="span3">
       <h2>New Bookmark</h2>
       {{> bookmarkAdd}}
+    </div>
+  </div>
+</template>
+
+<template name="notFound">
+  <div class="row-fluid">
+    <div class="span6" style="text-align: center;">
+      <h2>Hum...<br />It seems you're in the middle of nowhere dude...</h2>
+      <p><img src="/images/404.gif" alt="Not found - 404 error" /></p>
+    </div>
+    <div class="span6">
+      <h2>What about go to...</h2>
+
+      <ul class="nav nav-tabs nav-stacked">
+        <li><a href="{{homepagePath}}">This project homepage</a></li>
+        {{#each categories}}
+          <li><a href="/{{_id}}">{{name}} Bookmarks</a></li>
+        {{/each}}
+      </ul>
     </div>
   </div>
 </template>

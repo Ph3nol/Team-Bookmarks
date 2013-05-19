@@ -5,12 +5,18 @@ Meteor.Router.add({
     return 'homePage';
   }},
 
-  '/:categorySlug': { as: 'category', to: function (currentCategoryID) {
+  '/:_id': { as: 'category', to: function (currentCategoryID) {
     var category = Categories.findOne(currentCategoryID);
+
+    if (!category) {
+      return 'notFound';
+    }
 
     Meteor.subscribe('bookmarks', currentCategoryID);
     Session.set('currentCategoryID', currentCategoryID);
 
     return 'categoryPage';
-  }}
+  }},
+
+  '*': 'notFound'
 });

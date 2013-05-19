@@ -10,7 +10,9 @@
   </a>
   {{> header}}
   <div class="container-fluid">
-    {{renderPage}}
+    {{#isolate}}
+      {{renderPage}}
+    {{/isolate}}
   </div>
   {{> footer}}
 </body>
