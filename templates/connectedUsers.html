@@ -1,0 +1,14 @@
+<template name="connectedUsers">
+  <ul class="nav nav-tabs nav-stacked">
+    {{#each connectedUsers}}
+      <li>
+        <a href="#">
+          <img src="{{user.imageSrc}}" alt="{{user.name}}" />
+          {{user.name}}
+        </a>
+      </li>
+    {{else}}
+      <li><a href="#">No user connected.</a></li>
+    {{/each}}
+  </ul>
+</template>

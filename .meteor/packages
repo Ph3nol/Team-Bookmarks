@@ -14,3 +14,5 @@ accounts-github
 accounts-base
 bootstrap-updated
 accounts-ui-bootstrap-dropdown
+presence
+gravatar

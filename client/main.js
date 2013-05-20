@@ -1,3 +1,5 @@
+Meteor.subscribe('userPresence');
+Meteor.subscribe('users');
 Meteor.subscribe('categories');
 
 Template.header.helpers({

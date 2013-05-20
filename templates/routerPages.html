@@ -5,10 +5,17 @@
       {{> bookmarks}}
     </div>
     <div class="span3">
-      <h2>New Bookmark</h2>
-      {{> bookmarkAdd}}
+      {{> rightSidebar}}
     </div>
   </div>
+</template>
+
+<template name="rightSidebar">
+  <h2>New Bookmark</h2>
+  {{> bookmarkAdd}}
+
+  <h2>Connected users</h2>
+  {{> connectedUsers}}
 </template>
 
 <template name="categoryPage">
@@ -18,8 +25,7 @@
       {{> bookmarks}}
     </div>
     <div class="span3">
-      <h2>New Bookmark</h2>
-      {{> bookmarkAdd}}
+      {{> rightSidebar}}
     </div>
   </div>
 </template>

@@ -1,5 +1,13 @@
+Meteor.publish('userPresence', function() {
+  return Meteor.presences.find({}, {fields: {state: true, userId: true}});
+});
+
 Meteor.publish('categories', function () {
   return Categories.find();
+});
+
+Meteor.publish('users', function () {
+  return Meteor.users.find();
 });
 
 Meteor.publish('bookmarks', function (currentCategoryID) {

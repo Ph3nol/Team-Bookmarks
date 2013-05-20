@@ -8,6 +8,8 @@
     "bootstrap-updated": {},
     "font-awesome": {},
     "accounts-ui-bootstrap-dropdown": {},
-    "moment": {}
+    "moment": {},
+    "presence": {},
+    "gravatar": {}
   }
 }
